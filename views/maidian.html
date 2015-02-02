@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id ="ifeng_share_thumbnail" style="display:none">http://y1.ifengimg.com/ifengimcp/pic/20141219/5e7c318dc682b4bfc766_size14_w200_h200.jpg</div>
+<div id ="ifeng_share_title" style="display:none">直男癌们，去看病吧！</div>
+<div id ="ifeng_share_description" style="display:none">前方高能预警，玻璃心请绕行！</div>
+<div id ="ifeng_share_url" style="display:none">http://api.3g.ifeng.com/zhinanai</div>
+<!--凤凰统计代码（手机凤凰网域名下有效）：-->
+<script type="text/javascript" src="http://y0.ifengimg.com/ifengimcp/sta/20131211/sta_collection_4_touch_v2.3.js"></script>
+
+<script>
+    // 微信分享
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        window.shareData = {
+            "Link": "http://i.ifeng.com/zhinanai",
+            "Img_url": "http://y1.ifengimg.com/ifengimcp/pic/20141219/5e7c318dc682b4bfc766_size14_w200_h200.jpg",
+            "Title": "潜在直男癌测试！我得了"+score+"分，你敢跟我比吗？",
+            "Content": "前方高能预警，玻璃心请绕行!"
+        };
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "img_url": window.shareData.Img_url,
+                "img_width": "200",
+                "img_height": "200",
+                "link": window.shareData.Link,
+                "desc": window.shareData.Content,
+                "title": "潜在直男癌测试！我得了"+score+"分，你敢跟我比吗？",
+            }, function (res) {
+                _report('send_msg', res.err_msg);
+            })
+        });
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": window.shareData.Img_url,
+                "img_width": "200",
+                "img_height": "200",
+                "link": window.shareData.Link,
+                "desc": window.shareData.Content,
+                "title": "潜在直男癌测试！我得了"+score+"分，你敢跟我比吗？"
+            }, function (res) {
+                _report('timeline', res.err_msg);
+            });
+        });
+    }, false);
+</script>
+</body>
+</html>

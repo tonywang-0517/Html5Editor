@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width" name="viewport" />
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <title>h5模板</title>
+    <link rel="stylesheet" href="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper.css_151920.css">
+
+    <link href="/editor/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper.css_151920.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script src="http://y1.ifengimg.com/ifengimcp/sta/20141219/jquery-1.10.1.min.js_151917.js"></script>
+    <script src="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper-2.1.min.js_151917.js"></script>
+</head>
+<body>
+<div  class="creatModel" id="creatModel" >
+    <div style="margin-top:14%">
+        <img src="http://y3.ifengimg.com/ifengimcp/pic/20150126/22cfe68a98b94dfaf4ee_size3_w124_h41.png">
+        <hr/>
+    请选择图标:<br/><input type="text" id="pic" name="pic" placeholder="http://..."><br/>
+    请选择BGM:<br/><input type="text" id="bgm" name="bgm"  placeholder="http://..."><br/>
+    请输入标题:<br/><input type="text" id="title" name="title" placeholder="请输入标题"><br/>
+    请输入描述:<br/><input type="text" id="description" name="description"placeholder="请输入描述"><br/>
+    请输入箭头链接:<br/><input type="text" id="arrow" name="pic" placeholder="http://..."><br/>
+    请输入分享链接:<br/><input type="text" id="weixinhref" name="description"placeholder="http://...">
+    <br/> <br/> <br/> <br/>
+    <button id="creatcomplete" type="submit">完成</button>
+    </div>
+</div>
+<div class="selectModel" id="selectModel" >
+    <div class="swiper-container swiper-model">
+        <div class="swiper-wrapper" >
+            <div class="swiper-slide"  >
+                <button onclick="selectModelComplete(1);" class="modelSelectBtn">确认</button>
+                <img class="modelSelectPic" src=" http://y0.ifengimg.com/ifengimcp/pic/20150123/dc0cc2cad9520e73b230_size31_w290_h515.jpg">
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(2);"class="modelSelectBtn">确认</button>
+                <img class="modelSelectPic" src=" http://y1.ifengimg.com/ifengimcp/pic/20150123/ce2c13d735313590ff55_size34_w290_h515.jpg">
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(3);" class="modelSelectBtn">确认</button>
+                <img class="modelSelectPic" src=" http://y0.ifengimg.com/ifengimcp/pic/20150123/b042d3bd61c574d7c019_size41_w290_h515.jpg">
+
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(4);" class="modelSelectBtn">确认</button>
+                <<img class="modelSelectPic" src=" http://y3.ifengimg.com/ifengimcp/pic/20150123/a810906a89a30ad1104c_size47_w290_h515.jpg">
+            </div>
+        </div>
+        <div class="paginationModel" ></div>
+    </div>
+</div>
+<div id="editbtns" class="left-side sticky-left-side" style="width: 127px; overflow: hidden; outline: none; background: #575757;" tabindex="5001">
+    <div style="width:127px;height:97px;text-align:center">
+        <img style="width:120px;margin:40px 0 30px 0; " src="http://y3.ifengimg.com/ifengimcp/pic/20150126/22cfe68a98b94dfaf4ee_size3_w124_h41.png">
+    </div>
+    <div class="left-side" id="thebtns" style="margin-top: 120px; width: 127px; height: 80%; overflow: hidden; outline: none;" tabindex="5002">
+        <div id="editbtngroup">
+            <div class="swiper-container swiper-list">
+                <div style="display: none" class="paginationList"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"> <div class="pagebtn" onclick="pageSelected(this)"> 1</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="pagebtn" id="addpage">+ </div>
+        <div style="width: 127px;height: 92px;font-size: 17px;
+text-align: center;
+line-height: 12px;
+cursor: pointer;
+color: #ffffff;" id="creatCode">生成代码</div>
+    </div>
+    <div id="editshadow" style="display:none;position:fixed;top:0px;width:127px;height:100%"></div>
+    <div   style="width: 3px; z-index: 100; cursor: default; position: absolute; top: 120px; left: 124px; height: 735px; opacity: 0; "><div style="position: relative; top: 0px; float: right; width: 3px; height: 587px; border: 0px; border-radius: 0px;  background-clip: padding-box;"></div></div><div   style="height: 3px; z-index: 100; top: 852px; left: 0px; position: absolute; cursor: default; display: none; width: 124px; opacity: 0; "><div style="position: relative; top: 0px; height: 3px; width: 127px; border: 0px; border-radius: 0px;  background-clip: padding-box;"></div></div>
+</div>
+<div  id="content" style="position: absolute;height: 100%;width: 500px;background-color: #e6e6e6;left: 127px;overflow:scroll" >
+    <div id="changeModel" style="height: 50px;width: 100%;text-align: center;font-size: 16px;line-height:50px;cursor:pointer">更换模板</div>
+
+</div>
+<div id="mobile" style="position:relative;margin-right:3%;float:right;border:1px solid #000000;z-index: -1" >
+<div id="view" style="position:relative;float:right; ">
+    <img  style="height:100%;width:100%;background-size: 100% 100%;"src="http://y1.ifengimg.com/ifengimcp/pic/20150123/247701fdc9e9462978a9_size23_w322_h667.png">
+
+
+</div>
+</div>
+<script >
+    var newH = document.documentElement.clientHeight;
+    $('#view').css("height",newH);
+    $('#view').css("width",newH*640/1136);
+
+</script>
+</body>
+
+<script type="text/javascript" src="/editor/third-party/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/umeditor.min.js"></script>
+<script type="text/javascript" src="/editor/lang/zh-cn/zh-cn.js"></script>
+<script src="javascripts/index.js"></script>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width" name="viewport" />
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <title>h5模板</title>
+    <!-- 百度富文本编译器css-->
+    <link href="/editor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <!-- swiper的css-->
+    <link rel="stylesheet" href="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper.css_151920.css">
+    <style>
+        .swiper-list{
+            width:127px;
+            color:#fff;
+            text-align:center;
+        }
+        .swiper-slide{
+            font-size:42px;
+            margin-bottom:0;
+            line-height:250px;
+        }
+
+
+        .paginationModel{
+            position:absolute;
+            z-index:100;
+            left:10px;
+            bottom:10px;
+            width: 100%;
+            text-align: center;
+
+        }
+        .modelSelectBtn{
+            position:absolute;
+            width:20%;
+            height:4%;
+            left:40%;
+            top:2%;
+        }
+        .modelSelectPic{
+            position:absolute;
+            width:80%;
+            height:80%;
+            left:10%;
+            top:10%;
+            background-image: url(/images/asd.png);
+        }
+
+        .swiper-pagination-switch{
+            display:inline-block;
+            width:8px;
+            height:8px;
+            border-radius:8px;
+            background:#222;
+            margin-right:5px;
+            opacity:0.8;
+            border:1px solid #fff;
+            cursor:pointer;
+        }
+        .swiper-visible-switch{
+            background:#aaa;
+        }
+        .swiper-active-switch{
+            background:#fff;
+        }
+
+    </style>
+    <style>
+
+        /* Demo Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background: turquoise;
+            font-size: 14px;
+            height: 100%;
+
+
+        }
+        .swiper-slide{
+            position: relative;
+        }
+        .creatModel{
+            width: 100%;
+            height: 100%;
+            background:  url(http://y1.ifengimg.com/wzc/2014/1219/bg2.jpg) no-repeat center bottom transparent;
+            background-size: cover;
+            display: block;
+            z-index:99999;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            text-align: center;
+
+        }
+        .selectModel{
+            width: 100%;
+            height: 100%;
+            background:  url(http://y1.ifengimg.com/wzc/2014/1219/bg2.jpg) no-repeat center bottom transparent;
+            background-size: cover;
+            visibility: visible;
+            z-index:9999;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+
+
+        }
+        .sticky-left-side {
+            position: fixed;
+            height: 100%;
+            z-index: 100;
+        }
+        .left-side {
+            width: 240px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .pagebtn {
+            width: 127px;
+            height: 92px;
+            font-size: 27px;
+            text-align: center;
+            line-height: 92px;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="creatModel" id="creatModel" >
+    请选择图标:<input type="file" id="pic" name="pic" ><br/>
+    请选择BGM:<input type="file" id="bgm" name="bgm"><br/>
+    请输入标题:<input type="text" id="title" name="title" placeholder="请输入标题"><br/>
+    请输入描述:<input type="text" id="description" name="description"placeholder="请输入描述">
+    <br/> <br/> <br/> <br/>
+    <button id="creatcomplete" type="submit">完成</button>
+</div>
+
+<div class="selectModel" id="selectModel" >
+
+    <div class="swiper-container swiper-model">
+        <div class="swiper-wrapper" >
+            <div class="swiper-slide"  >
+                <button onclick="selectModelComplete(1);" class="modelSelectBtn">确认</button>
+                <div class="modelSelectPic"></div>
+
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(2);"class="modelSelectBtn">确认</button>
+                <div class="modelSelectPic"></div>
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(3);" class="modelSelectBtn">确认</button>
+                <div class="modelSelectPic"></div>
+
+            </div>
+            <div class="swiper-slide" >
+                <button onclick="selectModelComplete(4);" class="modelSelectBtn">确认</button>
+                <div class="modelSelectPic"></div>
+
+            </div>
+        </div>
+        <div class="paginationModel" ></div>
+    </div>
+
+
+</div>
+
+<div id="editbtns" class="left-side sticky-left-side" style="width: 127px; overflow: hidden; outline: none; background: rgb(11, 123, 51);" tabindex="5001">
+    <div style="width:127px;height:97px;text-align:center">
+        <img style="width:87px;margin:40px 0 30px 0; " src="http://y0.ifengimg.com/ifeng/index/20141124/logo.gif">
+    </div>
+
+    <div class="left-side" id="thebtns" style="margin-top: 120px; width: 127px; height: 80%; overflow: hidden; outline: none;" tabindex="5002">
+
+        <div id="editbtngroup">
+            <div class="swiper-container swiper-list">
+                <div style="display: none" class="paginationList"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"> <div class="pagebtn" onclick="pageSelected(this)"> 1</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="pagebtn" id="addpage">+ </div>
+
+
+
+    </div>
+
+
+
+
+    <div id="editshadow" style="display:none;position:fixed;top:0px;width:127px;height:100%">
+    </div>
+
+    <div   style="width: 3px; z-index: 100; cursor: default; position: absolute; top: 120px; left: 124px; height: 735px; opacity: 0; "><div style="position: relative; top: 0px; float: right; width: 3px; height: 587px; border: 0px; border-radius: 0px;  background-clip: padding-box;"></div></div><div   style="height: 3px; z-index: 100; top: 852px; left: 0px; position: absolute; cursor: default; display: none; width: 124px; opacity: 0; "><div style="position: relative; top: 0px; height: 3px; width: 127px; border: 0px; border-radius: 0px;  background-clip: padding-box;"></div></div></div>
+<div  id="content" style="position: absolute;height: 100%;width: 500px;background-color: #ff6600;left: 127px;overflow:scroll" >
+    <div id="changeModel" style="height: 50px;width: 100%;text-align: center;font-size: 16px;line-height:50px;cursor:pointer">更换模板</div>
+
+</div>
+<div style="position:relative;float:right;height: 736px;width:414px ">
+    <div  style="height:100%;width:100%;background-image: url(http://y1.ifengimg.com/wzc/2014/1219/bg.jpg);background-size: 100% auto;">
+        <div style="position: absolute;width: 100%;height: auto;top:60%;background-color: rgba(128,0,122,0.2)">
+            <p style="text-align: center;">
+                <span style="color:#000000;line-height:1.5;font-size:16px;">您可以进行文本输​​<span style="line-height:2;">​</span>入、复制、黏贴；调整字体大小、颜色、对齐、行间距；也可以对文本框本身设置相应的背景颜色以及透明度。</span>
+            </p>
+        </div>
+        <div style="position:absolute;width:80%;height:13%;top: 20%;left:10%;background-image: url(/images/s.png);"></div>
+    </div>
+</div>
+<script src="http://y1.ifengimg.com/ifengimcp/sta/20141219/jquery-1.10.1.min.js_151917.js"></script>
+<script type="text/javascript" src="/editor/third-party/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/editor/umeditor.min.js"></script>
+<script type="text/javascript" src="/editor/lang/zh-cn/zh-cn.js"></script>
+<script src="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper-2.1.min.js_151917.js"></script>
+
+
+
+<script type="text/javascript">
+    var oldpage = 1;
+    var um = [];
+    document.getElementById("creatcomplete").onclick=function(){document.getElementById("creatModel").style.visibility="hidden"};
+    var newH = document.documentElement.clientHeight;
+    $(".swiper-container").height(newH*0.7);
+    var swiperList = new Swiper('.swiper-list',{
+        mode: 'vertical',
+        pagination: '.paginationList',
+        paginationClickable: true,
+        slidesPerView: 7
+    });
+    var swiperModel = new Swiper('.swiper-model',{
+        mode: 'horizontal',
+        pagination: '.paginationModel',
+        paginationClickable: true,
+        slidesPerView: 1
+    });
+
+
+    $('#addpage').click(function(e) {
+        e.preventDefault();
+        // page[oldpage] = document.getElementById("editArea").innerHTML;
+        oldpage=swiperList.slides.length+1;
+        swiperList.appendSlide( '<div class="pagebtn" onclick="pageSelected(this)">'+ (swiperList.slides.length+1)+'</div>');
+        document.getElementById("selectModel").style.visibility="visible";
+    });
+
+    function pageSelected(self){
+        oldpage = self.innerHTML;
+        hiddenExceptN(parseInt(self.innerHTML));
+    };
+
+    document.getElementById("changeModel").onclick=function(){
+        document.getElementById("selectModel").style.visibility="visible";
+    };
+    var selectModelComplete = function(n){
+        var editArea = function(n,content){
+            var temp = '<div id="editArea'+n+'" style="position: absolute;width: 100%">'+content+'</div>';
+            return temp;
+        };
+        var beijing=function(p){
+            var  temp = '<hr/>背景图片<input id="p'+p+'bg" type="file">';
+            return temp;
+        };
+        var tupian = function (p,n){
+            var temp=' <hr/>图片'+n+'<input id="p'+p+'pic'+n+'Src" type="file"> 交互动作：<select id="p'+p+'pic'+n+'Action" data-am-selected><option value="a">渐现</option><option value="b">从上向下划出</option><option value="o">从下向上划出</option></select><br/>x坐标:<input id="p'+p+'pic'+n+'x" type="text" placeholder="0%/0px">y坐标:<input id="p'+p+'pic'+n+'y" type="text" placeholder="0%/0px"><br/>&nbsp;宽度:<input id="p'+p+'pic'+n+'Width" type="text" placeholder="0%/0px">&nbsp;高度:<input id="p'+p+'pic'+n+'Height" type="text" placeholder="0%/0px"> ';
+            return temp;
+        };
+        var wenzi = function (p,n){
+            var temp='<hr/><p>文字'+n+'</p>背景颜色：<input id="p'+p+'text'+n+'bgc" type="text" placeholder="rgba(0,0,0,0.1);">交互动作：<select id="p'+p+'text'+n+'Action" data-am-selected><option value="a">渐现</option><option value="b">从上向下划出</option> <option value="o">从下向上划出</option></select><br/> x坐标:<input id="p'+p+'text'+n+'x" type="text" placeholder="0%/0px">y坐标:<input type="text"id="p'+p+'text'+n+'y" placeholder="0%/0px"><br/>&nbsp;宽度:<input type="text" id="p'+p+'text'+n+'Width" placeholder="0%/0px">&nbsp;高度:<input type="text" id="p'+p+'text'+n+'Height"placeholder="0%/0px"><textarea id="p'+p+'myEditor'+n+'" style="color:#000000;width:100%;height:10%;"></textarea>';
+            return temp;
+        };
+        var tijiao=function (p){
+            var temp = '<hr/><button id="p'+p+'pageSubmit">提交</button>';
+            return temp;
+        }
+        if(n==1){//单背景
+            $('#content').append(editArea(oldpage,beijing(oldpage)+tijiao(oldpage)));
+        }
+
+        if(n==2){//4图2文字以下
+
+            $('#content').append(editArea(oldpage,beijing(oldpage)+tupian(oldpage,1)+tupian(oldpage,2)+tupian(oldpage,3)+tupian(oldpage,4)+wenzi(oldpage,1)+wenzi(oldpage,2)+tijiao(oldpage)));
+            //实例化编辑器
+            creatEditor(oldpage,1);
+            creatEditor(oldpage,2);
+            creatEditor(oldpage,3);
+
+        }
+        if(n==3){//轮播 三图三文字
+            var temp3 = editArea(oldpage,beijing(oldpage)+tupian(oldpage,1)+tupian(oldpage,2)+tupian(oldpage,3)+tupian(oldpage,4)+wenzi(oldpage,1)+wenzi(oldpage,2)+wenzi(oldpage,3)+tijiao(oldpage));
+            $('#content').append(temp3);
+            //实例化编辑器
+            creatEditor(oldpage,1);
+            creatEditor(oldpage,2);
+            creatEditor(oldpage,3);
+        }
+        if(n==4){
+            $('#content').append(editArea(oldpage,"还没有第四模板"));
+        }
+
+        hiddenExceptN(oldpage);
+        document.getElementById("selectModel").style.visibility="hidden";
+    }
+
+    var hiddenExceptN = function(n){
+        var allPages = swiperList.slides.length;
+        for(var i=1;i<=allPages;i++){
+            $('#editArea'+i).hide();
+        }
+        $('#editArea'+n).show(200);
+
+    };
+    var creatEditor = function(p,n){
+        var temp = UM.createEditor('p'+p+'myEditor'+n+'',{
+            initialFrameHeight:250,//设置编辑器高度
+            scaleEnabled:true
+        });
+        um.push(temp);
+    }
+</script>
+
+</body>
+
+</html>

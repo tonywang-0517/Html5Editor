@@ -1,0 +1,20 @@
+<div style="position:relative;width:100%;height:100%;background: url(beijing) no-repeat center bottom transparent;background-size: 100%">
+
+
+    <img id="tupian1id" style="position:absolute;opacity:tupian1opacity;top:tupian1y;left:tupian1x;width:tupian1width;height:tupian1height;"src="tupian1src">
+    <img id="tupian2id" style="position:absolute;opacity:tupian2opacity;top:tupian2y;left:tupian2x;width:tupian2width;height:tupian2height;"src="tupian2src">
+    <img id="tupian3id" style="position:absolute;opacity:tupian3opacity;top:tupian3y;left:tupian3x;width:tupian3width;height:tupian3height;"src="tupian3src">
+    <img id="tupian4id" style="position:absolute;opacity:tupian4opacity;top:tupian4y;left:tupian4x;width:tupian4width;height:tupian4height;"src="tupian4src">
+    <div id="wenzi1id" style="position: absolute;opacity:wenzi1opacity;width: wenzi1width;height: wenzi1height;top:wenzi1y; left:wenzi1x; background-color: wenzi1rgba">
+        wenzi1content
+
+    </div>
+    <div id="wenzi2id" style="position: absolute;opacity:wenzi2opacity;width: wenzi2width;height: wenzi2height;top:wenzi2y; left:wenzi2x ;background-color: wenzi2rgba">
+        wenzi2content
+
+    </div>
+    <div id="wenzi3id" style="position: absolute;opacity:wenzi13opacity;width: wenzi3width;height: wenzi3height;top:wenzi3y; left:wenzi3x; background-color: wenzi3rgba">
+        wenzi3content
+
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+<meta name="Keywords" content="土豆,主粮" />
+<meta name="description" content="前方高能预警，玻璃心请绕行" />
+<title>土豆漫漫上位路-凤凰新闻</title>
+<style>
+/* Demo Styles */
+body {
+    margin: 0;
+}
+@-webkit-keyframes arrow{
+    0%{-webkit-transform:translateY(0px);opacity: 0;}
+    50%{-webkit-transform:translateY(-5px);opacity: 1;}
+    100%{-webkit-transform:translateY(-10px);opacity: 0;}
+}
+@-moz-keyframes arrow{
+    0%{-moz-transform:translateX(0);opacity: 0;}
+    50%{-webkit-transform:translateY(-5px);opacity: 1;}
+    100%{-moz-transform:translateY(-10px);opacity: 0;}
+}
+@-o-keyframes arrow{
+    0%{-o-transform:translateX(0);opacity: 0;}
+    50%{-webkit-transform:translateY(-5px);opacity: 1;}
+    100%{-o-transform:translateY(-10px);opacity: 0;}
+}
+@-ms-keyframes arrow{
+    0%{-ms-transform:translateX(0);opacity: 0;}
+    50%{-webkit-transform:translateY(-5px);opacity: 1;}
+    100%{-ms-transform:translateY(-10px);opacity: 0;}
+}
+@keyframes arrow{
+    0%{transform:translateX(0);opacity: 0;}
+    50%{-webkit-transform:translateY(-5px);opacity: 1;}
+    100%{transform:translateY(-10px);opacity: 0;}
+}
+.arrow {
+    position: absolute;
+    width: 10%;
+    left: 45%;
+    bottom: 7%;
+    z-index: 30;
+    -webkit-animation:arrow 1s linear infinite;
+    -moz-animation:arrow 1s linear infinite;
+    -o-animation:arrow 1s linear infinite;
+    -ms-animation:arrow 1s linear infinite;
+    animation:arrow 1s linear infinite;
+}
+#fenghuang{
+    position: absolute;
+    width: 20%;
+    left: 40%;
+    top:30%;
+    -webkit-animation:shun360 2s linear infinite;
+    -moz-animation:shun360 2s linear infinite;
+    -o-animation:shun360 2s linear infinite;
+    -ms-animation:shun360 2s linear infinite;
+    animation:shun360 2s linear infinite;
+}
+@-webkit-keyframes shun360{
+    0%{-webkit-transform:rotate(0deg);}
+    100%{-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes shun360{
+    0%{-moz-transform:rotate(0deg);}
+    100%{-moz-transform:rotate(360deg);}
+}
+@-o-keyframes shun360{
+    0%{-o-transform:rotate(0deg);}
+    100%{-o-transform:rotate(360deg);}
+}
+@-ms-keyframes shun360{
+    0%{-ms-transform:rotate(0deg);}
+    100%{-ms-transform:rotate(360deg);}
+}
+@keyframes shun360{
+    0%{transform:rotate(0deg);}
+    100%{transform:rotate(360deg);}
+}
+.loading{
+    width: 100%;
+    height: 100%;
+    background:  url(http://y2.ifengimg.com/ifengimcp/pic/20141219/69a6167a3c35fc438e80_size171_w640_h1136.jpg) no-repeat center bottom transparent;
+    background-size: cover;
+    display: block;
+    z-index: 19999;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+</style>
+
+</head>
+<body>
+<div class="loading">
+    <img src="http://y3.ifengimg.com/ifengimcp/pic/20141229/36bf7efc10f1a3f1bad9_size33_w1024_h1024.png" id="fenghuang" /><h2 style="width: 100%;
+z-index: 999;
+position: absolute;
+top: 40%;
+text-align: center;" >客官，请稍等...</h2></div>
+
+</div>
+<img class="arrow" src="http://y1.ifengimg.com/wzc/2014/1219/arrow.png"/>
+
+
+<script>
+    setTimeout(function(){  document.getElementsByClassName("loading")[0].style.display="none";
+        $("#main").css("visibility","visible");
+        document.getElementsByClassName("loading")[0].style.display="none";
+        },5000);
+
+
+</script>
+</body>
+</html>

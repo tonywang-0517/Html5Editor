@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width" name="viewport" />
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <title>weixintitle</title>
+     <link rel="stylesheet" href="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper.css_151920.css">
+    <script src="http://y1.ifengimg.com/ifengimcp/sta/20141219/jquery-1.10.1.min.js_151917.js"></script>
+    <script src="http://y3.ifengimg.com/ifengimcp/sta/20141219/idangerous.swiper-2.1.min.js_151917.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #close {
+            position: fixed;
+            width: 8%;
+            top: 3%;
+            right: 5%;
+            z-index: 9999;
+        }
+        #music {
+            position: fixed;
+            width: 8%;
+            top: 3%;
+            right: 5%;
+            z-index: 9999;
+        }
+        @-webkit-keyframes arrow{
+            0%{-webkit-transform:translateY(0px);opacity: 0;}
+            50%{-webkit-transform:translateY(-5px);opacity: 1;}
+            100%{-webkit-transform:translateY(-10px);opacity: 0;}
+        }
+        @-moz-keyframes arrow{
+            0%{-moz-transform:translateX(0);opacity: 0;}
+            50%{-webkit-transform:translateY(-5px);opacity: 1;}
+            100%{-moz-transform:translateY(-10px);opacity: 0;}
+        }
+        @-o-keyframes arrow{
+            0%{-o-transform:translateX(0);opacity: 0;}
+            50%{-webkit-transform:translateY(-5px);opacity: 1;}
+            100%{-o-transform:translateY(-10px);opacity: 0;}
+        }
+        @-ms-keyframes arrow{
+            0%{-ms-transform:translateX(0);opacity: 0;}
+            50%{-webkit-transform:translateY(-5px);opacity: 1;}
+            100%{-ms-transform:translateY(-10px);opacity: 0;}
+        }
+        @keyframes arrow{
+            0%{transform:translateX(0);opacity: 0;}
+            50%{-webkit-transform:translateY(-5px);opacity: 1;}
+            100%{transform:translateY(-10px);opacity: 0;}
+        }
+        .arrow {
+            position: fixed;
+            width: 10%;
+            left: 45%;
+            bottom: 7%;
+            z-index: 30;
+            -webkit-animation:arrow 1s linear infinite;
+            -moz-animation:arrow 1s linear infinite;
+            -o-animation:arrow 1s linear infinite;
+            -ms-animation:arrow 1s linear infinite;
+            animation:arrow 1s linear infinite;
+        }
+        #fenghuang{
+            position: absolute;
+            width: 20%;
+            left: 40%;
+            top:30%;
+            -webkit-animation:shun360 2s linear infinite;
+            -moz-animation:shun360 2s linear infinite;
+            -o-animation:shun360 2s linear infinite;
+            -ms-animation:shun360 2s linear infinite;
+            animation:shun360 2s linear infinite;
+        }
+        @-webkit-keyframes shun360{
+            0%{-webkit-transform:rotate(0deg);}
+            100%{-webkit-transform:rotate(360deg);}
+        }
+        @-moz-keyframes shun360{
+            0%{-moz-transform:rotate(0deg);}
+            100%{-moz-transform:rotate(360deg);}
+        }
+        @-o-keyframes shun360{
+            0%{-o-transform:rotate(0deg);}
+            100%{-o-transform:rotate(360deg);}
+        }
+        @-ms-keyframes shun360{
+            0%{-ms-transform:rotate(0deg);}
+            100%{-ms-transform:rotate(360deg);}
+        }
+        @keyframes shun360{
+            0%{transform:rotate(0deg);}
+            100%{transform:rotate(360deg);}
+        }
+        .loading{
+            width: 100%;
+            height: 100%;
+            background:  url(http://y2.ifengimg.com/ifengimcp/pic/20141219/69a6167a3c35fc438e80_size171_w640_h1136.jpg) no-repeat center bottom transparent;
+            background-size: cover;
+            display: block;
+            z-index: 19999;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .swiper-pagination-switch{
+            display:inline-block;
+            width:8px;
+            height:8px;
+            border-radius:8px;
+            background:#222;
+            margin-right:5px;
+            opacity:0.8;
+            border:1px solid #fff;
+            cursor:pointer;
+        }
+        .swiper-visible-switch{
+            background:#aaa;
+        }
+        .swiper-active-switch{
+            background:#fff;
+        }
+        .swiper-slide{
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+<div class="loading">
+    <img src="http://y3.ifengimg.com/ifengimcp/pic/20141229/36bf7efc10f1a3f1bad9_size33_w1024_h1024.png" id="fenghuang" /><h2 style="width: 100%;z-index: 99999;position: absolute;top: 40%;text-align: center;" >客官，请稍等...</h2></div>
+</div>
+<audio id="myaudio" src="yinyuehref" controls="controls" loop="true" hidden="true"  ></audio>
+<img class="arrow" src="">
+<img src="http://y1.ifengimg.com/wzc/2014/1229/music.png" id="music" />
+<img src="http://y1.ifengimg.com/wzc/2014/1229/close.png" id="close" />
+
+<div id="main" style="visibility: hidden">
+    <div class="swiper-container swiper-model">
+        <div class="swiper-wrapper" >
+            pageslide
+        </div>
+        <div class="paginationModel" ></div>
+    </div>
+</div>
+</body>
+<script>
+    var newH = document.documentElement.clientHeight;
+    $(".swiper-model").height(newH);
+    var swiperModel = new Swiper('.swiper-model',{
+        mode: 'vertical',
+        pagination: '.paginationModel',
+        paginationClickable: true,
+        slidesPerView: 1,
+        onSlideChangeStart: function() {
+
+            var pageIndex = swiperModel.activeSlide().index();
+            meiyededongzuo
+        }
+    });
+    var newSlide =  swiperModel.createSlide('');
+    newSlide.append();
+    swiperModel.swipeTo(swiperModel.slides.length-1,0);
+    swiperModel.swipeTo(0,1);
+    swiperModel.removeLastSlide();
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        window.shareData = {
+            "Link": "weixinhref",
+            "Img_url": "weixinpic",
+            "Title": "weixintitle",
+            "Content": 'weixincontent'
+        };
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+
+            WeixinJSBridge.invoke('sendAppMessage', {
+                "img_url": window.shareData.Img_url,
+                "img_width": "200",
+                "img_height": "200",
+                "link": window.shareData.Link,
+                "desc": window.shareData.Content,
+                "title": window.shareData.Title
+            }, function (res) {
+                _report('send_msg', res.err_msg);
+            })
+        });
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+            WeixinJSBridge.invoke('shareTimeline', {
+                "img_url": window.shareData.Img_url,
+                "img_width": "200",
+                "img_height": "200",
+                "link": window.shareData.Link,
+                "desc": window.shareData.Content,
+                "title": window.shareData.Title
+            }, function (res) {
+                _report('timeline', res.err_msg);
+            });
+        });
+    }, false);
+
+</script>
+<script>
+    setTimeout(function(){  document.getElementsByClassName("loading")[0].style.display="none";
+        $("#main").css("visibility","visible");
+        document.getElementsByClassName("loading")[0].style.display="none";
+    },4000);
+
+    var yinyue = document.getElementById("myaudio");
+    $("#music").click(function(){$(this).hide();$("#close").show();yinyue.pause();});
+    $("#close").click(function(){$(this).hide();$("#music").show();yinyue.play();});
+</script>
+
+
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Keywords" content="" />
+    <meta name="description" content="" />
+    <title></title>
+</head>
+<body>
+<form id="asd" action="http://upapi.iclient.ifeng.com/upload/pic">
+<input id="sid" name="sid" type="text">
+<input id="enkey" name="enkey" type="text">
+    <input id="file" name="file" type="file">
+    <div onclick="sss()">tijiao</div>
+    <button type="submit">tijiao</button>
+</form>
+<script src="http://y1.ifengimg.com/ifengimcp/sta/20141219/jquery-1.10.1.min.js_151917.js"></script>
+<script>
+    function sss() {
+        $.ajax({
+            type: "POST",
+            url: "http:// upapi.iclient.ifeng.com/upload/pic",
+            async: false,
+            data: $("#asd").serialize(),
+            error: function (err) {
+                alert(err);
+            },
+            success: function (msg) {
+                alert(msg.url);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

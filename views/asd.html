@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <script src="http://y1.ifengimg.com/ifengimcp/sta/20150121/jquery.js_122043.js"></script>
+    <script src="http://y1.ifengimg.com/ifengimcp/sta/20150121/bootstrap.js_122037.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+
+
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="http://y2.ifengimg.com/ifengimcp/sta/20150121/bootstrap.css_122036.css" rel="stylesheet" type="text/css"/>
+
+    <link href="http://y2.ifengimg.com/ifengimcp/sta/20150121/flat-ui.css_122036.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<img src="http://y3.ifengimg.com/ifengimcp/pic/20150121/3fce2e1736c736826bfb_size93_w801_h801.png" style="width:0px;height:0px;position:absolute;z-index:-1;" >
+<center>
+
+    <strong><p style="font-size:40px;height:52px;margin-top:0px" id="title">Try Try See</p></strong>
+    <p  id="title2" style="height:17px">please click the right button</p>
+    <p id="last_time" style="height:17px;margin-top:0px">1000</p>
+
+
+    <div id="question" style="font-size:30px;margin-bottom:15px">
+    </div>
+
+    <div id="button">
+        <button class="b btn btn-embossed btn-danger" style="width:200px"ans="1"><strong>1</strong></button><br><br>
+        <button class="b btn btn-embossed btn-info" style="width:200px"ans="2"><strong>2</strong></button><br><br>
+        <button class="b btn btn-embossed btn-primary" style="width:200px"ans="3"><strong>3</strong></button>
+    </div>
+    <div id="retry">
+        <button class="btn btn-hg btn-warning" style="width:200px">
+            Retry!
+        </button>
+    </div>
+    <audio id="coin"><source src="http://123.57.41.190/1plus2/music/coin.mp3" type="audio/mp3"></audio>
+    <audio id="died"><source src="http://123.57.41.190/1plus2/music/died.mp3" type="audio/mp3"></audio>
+    <div style="margin-top:140px" >
+        <a href="#" id="tool" data-toggle="tooltip" data-html="true" data-placement="top" title="" data-original-title="点赞狂魔李大猫<br>david500834<br>王小岳<br>wangpuyue07">About Us</a>
+        <div>
+</center>
+<script>
+
+
+$('#tool').tooltip('hide')
+
+
+
+
+$("#retry").hide()
+var timerc=0;//全局时间变量（秒数）
+var result = 0;
+round = 0;
+best = 0;
+var amount = 0;
+var msg = [];
+var game = 0;
+
+function clock_start(){
+    if(game==0){
+
+
+        if(timerc < 1100){
+            ++timerc;
+            $("#last_time").html(parseInt(1100-timerc));
+            setTimeout("clock_start()", 1);
+        }
+        else if(timerc <1150&&timerc>=1100)
+        {
+            ++timerc;
+            setTimeout("clock_start()", 1);
+        }
+        else
+        {
+            $("#title").html("Sorry but time out")
+            game_over()
+        }
+
+    }
+};
+
+
+
+function game_over(){
+    $("#button").hide()
+    $("#retry").show()
+    $('#died')[0].play();
+    if(best<round)
+    {
+        best = round
+    }
+    $("#last_time").html("best score:"+best);
+    //新版微信街口
+    $('title').html('我得了'+best+'分，你敢跟我比么?');
+
+
+}
+
+function retry()
+{
+    game = 0;
+    $("#button").show()
+    $("#retry").hide()
+    time = 0;
+    round = 1;
+    result = 0;
+    creat_question()
+    $("#last_time").html("1000")
+
+    $("#title").html("Try Try See")
+    $("#title2").html("please the right button")
+}
+
+function creat_amount(){
+    amount = 0
+    if(round<=10)
+    {msg = [2,3]}
+    else if(round>10&&round<=20)
+    {msg = [2,3,4]}
+    else if(round>20&&round<=30)
+    {msg = [3,4]}
+    else if(round>30&&round<=40)
+    {msg = [3,4,5]}
+    else if(round>40&&round<=50)
+    {msg = [4,5]}
+    else
+    {
+        alert("You NB!!!")
+        return
+    }
+    amount = msg[Math.floor(Math.random() * msg.length)]-1;
+
+
+    return amount
+}
+function creat_question(){
+    result = 0
+    amount = creat_amount()
+    var num_pool = [1,2,3]
+    var num = num_pool[Math.floor(Math.random() * 3)]
+    var symbol = 0
+    while(true)
+    {
+        $("#question").empty()
+        $("#question").append("<span>"+num+"</span>")
+        result = num
+        for(var i=0;i<=amount-1;i++)
+        {
+            num = num_pool[Math.floor(Math.random() * 3)]
+            if(Math.floor( Math.random() * 2 )==0)
+            {
+                symbol = "+"
+                result = result+num
+            }
+            else
+            {
+                symbol = "-"
+                result = result-num
+            }
+            $("#question").append("<span>"+symbol+"</span>")
+            $("#question").append("<span>"+num+"</span>")
+        }
+
+        if([1,2,3].indexOf(result)!=-1)
+        {
+            $("#question").append("<span>=</span>")
+            $("#question").append("<span id='answer'>?</span>")
+            break
+        }
+        $("#question").empty()
+    }
+
+
+
+}
+function next()
+{
+    timerc = 0
+    round = round+1
+    creat_amount()
+    creat_question()
+    $('#coin')[0].play();
+    clock_start()
+
+
+}
+
+$(".b").click(function(){
+    $("#title2").html("your score:"+round)
+    you_ans = parseInt($(this).attr("ans"))
+    if(you_ans==parseInt(result))
+    {
+        next()
+    }
+    else
+    {
+        game = 1;
+
+
+        $("#title").html("You lost?")
+        $("#answer").html("<span style='color:red'>"+you_ans+"</span>")
+
+        game_over()
+    }
+})
+
+$("#retry").click(function(){
+    retry()
+})
+
+
+
+creat_question()
+
+//powered by david500834
+
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    window.shareData = {
+        "Link": "http://api.3g.ifeng.com/lpf",
+        "Img_url": "http://y3.ifengimg.com/ifengimcp/pic/20150121/3fce2e1736c736826bfb_size93_w801_h801.png",
+        "Title": "3以内的儿童加减法等你来挑战",
+        "Content": '我得了'+best+'分，你敢跟我比么?'
+    };
+    // 发送给好友
+    WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+
+        WeixinJSBridge.invoke('sendAppMessage', {
+            "img_url": window.shareData.Img_url,
+            "img_width": "200",
+            "img_height": "200",
+            "link": window.shareData.Link,
+            "desc": window.shareData.Content,
+            "title": "3以内的儿童加减法等你来挑战"
+        }, function (res) {
+            _report('send_msg', res.err_msg);
+        })
+    });
+    // 分享到朋友圈
+    WeixinJSBridge.on('menu:share:timeline', function (argv) {
+        WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": window.shareData.Img_url,
+            "img_width": "200",
+            "img_height": "200",
+            "link": window.shareData.Link,
+            "desc": window.shareData.Content,
+            "title": "3以内的儿童加减法等你来挑战"
+        }, function (res) {
+            _report('timeline', res.err_msg);
+        });
+    });
+}, false);
+</script>
+</body>
+</html>
+
+​

@@ -1,0 +1,32 @@
+<div class="swiper-container swiper-nested-pagenumber" style="position:relative;background: url(beijing) no-repeat center bottom transparent;background-size: 100%">
+    <div class="swiper-wrapper">
+        <div  class="swiper-slide" >
+            <img style="position:absolute;top:tupian1y;left:tupian1x;width:tupian1width;height:tupian1height;background-size: 100% 100%" src="tupian1src" />
+            <div style="position: absolute;width: wenzi1width;height:wenzi1height;top:wenzi1y;left:wenzi1x;background-color: wenzi1rgba">
+                wenzi1content
+            </div>
+        </div>
+        <div  class="swiper-slide" >
+                    <img style="position:absolute;top:tupian2y;left:tupian2x;width:tupian2width;height:tupian2height;background-size: 100% 100%" src="tupian2src" />
+                    <div style="position: absolute;width: wenzi2width;height:wenzi2height;top:wenzi2y;left:wenzi2x;background-color: wenzi2rgba">
+                        wenzi2content
+                    </div>
+        </div>
+        <div  class="swiper-slide" >
+                            <img style="position:absolute;top:tupian3y;left:tupian3x;width:tupian3width;height:tupian3height;background-size: 100% 100%" src="tupian3src" />
+                            <div style="position: absolute;width: wenzi3width;height:wenzi3height;top:wenzi3y;left:wenzi3x;background-color: wenzi3rgba">
+                                wenzi3content
+                            </div>
+        </div>
+    </div>
+
+</div>
+<div style="position: absolute;text-align: center;width: 100%;top: 70%"><div class="pagination-nested-pagenumber"></div></div>
+<script>
+var newH = document.documentElement.clientHeight;
+ $(".swiper-nested-pagenumber").height(newH);
+            var swiperNestedpagenumber = new Swiper('.swiper-nested-pagenumber', {
+                pagination: '.pagination-nested-pagenumber',
+                paginationClickable: true
+            });
+</script>
